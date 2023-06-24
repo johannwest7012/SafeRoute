@@ -1,0 +1,19 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px 20px;
+    height: 300px;
+}
+.text-container { 
+position: relative;
+width: 50%;
+left: 25%;
+text-align: center;
+}
+  
+.ptext {
+text-align: center;
+font-size: 12px;
+}

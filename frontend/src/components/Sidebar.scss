@@ -1,0 +1,259 @@
+.sidebar {
+    width: 200px;
+    height: 100%;
+    background-color: #484CA3;
+    /* padding: 20px; */
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-left: 20px;
+
+  }
+
+.list-header { 
+  color: white;
+  margin: 15px;
+  font-family: 'Gill Sans','Open Sans',sans-serif!important;
+  font-weight: 1000;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.list-header-icon { 
+  position: relative;
+  top: 3px;
+  height: 20px;
+  margin-right: 5px;
+  
+}
+  
+  .search-bar {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  input[type='text'] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  
+  .search-results-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .search-results-item:hover {
+    background-color: #f2f2f2;
+  }
+
+  .countrycard {
+    max-width: 490px;
+    width: 100%;
+    border-radius: 12px;
+    
+    header {
+      --start: 15%;
+      
+      height: 130px;
+      background-image: repeating-radial-gradient(circle at var(--start), transparent 0%, transparent 10%, rgba(54, 89, 219, .33) 10%, rgba(54, 89, 219, .33) 17%), linear-gradient(to right, #5b7cfa, #3659db);
+      color: #fff;
+      position: relative;
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+      
+      .countrycard__title {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        right: calc(var(--start) * .75);
+        transform: translateY(-50%);
+        text-transform: uppercase;
+        margin: 0;
+        
+        span {
+          display: block;
+        }
+        
+        &--top {
+          font-size: 24px;
+          font-weight: 700;
+          letter-spacing: 6.5px;
+        }
+        
+        &--bottom {
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 3.55px;
+          opacity: .65;
+          transform: translateY(-2px);
+        }
+      }
+      
+      .countrycard__icon {
+        fill: #fff;
+        opacity: .35;
+        width: 50px;
+        position: absolute;
+        top: 50%;
+        left: var(--start);
+        transform: translate(-50%, -50%);
+      }
+    }
+    
+    &__profiles {
+      background-color: #fff;
+      border-radius: 0 0 12px 12px;
+      padding: 15px 15px 20px;
+      display: grid;
+      row-gap: 8px;
+    }
+    
+    &__profile {
+      display: grid;
+      grid-template-columns: 1fr 3fr 1fr;
+      align-items: center;
+      padding: 10px 30px 10px 10px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+      cursor: pointer;
+      transition: transform .25s cubic-bezier(.7,.98,.86,.98), box-shadow .25s cubic-bezier(.7,.98,.86,.98);
+      background-color: #fff;
+      margin-bottom: 5px;
+      
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
+      }
+    }
+    
+    &__picture {
+      max-width: 100%;
+      width: 60px;
+    }
+    
+    &__name {
+      color: #979cb0;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.64px;
+      margin-left: 12px;
+    }
+    
+    &__remove {
+      color: lightgrey;
+      font-weight: 700;
+      font-size: 20px;
+      text-align: right;
+      
+      & > span {
+        opacity: .8;
+        font-weight: 600;
+        font-size: 13px;
+        margin-left: 3px;
+      }
+    }
+  }
+
+  body {
+    margin: 0;
+    background-color: #eaeaea;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  
+  .countrycard {
+    box-shadow: 0 0 40px -10px rgba(0, 0, 0, .4);
+  }
+
+  
+  @mixin cross($size: 1px, $color: white, $thickness: 1px) {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    position: relative;
+    width: $size;
+    height: $size;
+  
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: ($size - $thickness) / 2;
+      left: 0;
+      right: 0;
+      height: $thickness;
+      background: $color;
+      border-radius: $thickness;
+    }
+  
+    &:before {
+      transform: rotate(45deg);
+    }
+  
+    &:after {
+      transform: rotate(-45deg);
+    }
+  
+    span {
+      display: block;
+    }
+  
+  }
+  .btn-close {
+    position: relative;
+    left: 25px;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background: hsl(216, 100, 50);
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 150ms;
+    
+    .icon-cross {
+      @include cross(7px, #fff, 2px);   
+    }
+    
+    &:hover,
+    &:focus {
+      transform: rotateZ(90deg);
+      background: hsl(216, 100, 40);
+    }
+  
+  }
+  
+  
+    
+ 
+
+  
