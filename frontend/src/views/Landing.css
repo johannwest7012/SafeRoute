@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+  }
+
+
+.pic { 
+    width: 100%;
+    height: 800px;
+    background-image: url('/public/background.png');
+    background-size: cover;
+}
+
+
+.left-div {
+    width: 33.33%;
+    height: 800px;
+    background-image: url('/public/background.png');
+    /* background-size: cover; */
+  }
+
+  .right-div {
+    width: 66.66%;
+    background-color: #F5F5F7;
+  }
+
+
+  .herotext { 
+    font-size: 100px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    color: black;
+  }

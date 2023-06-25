@@ -66,7 +66,7 @@ const { getDb } = require('../db');
 const { ObjectId } = require('mongodb');
 
 
-router.post('/', async (req, res) => {
+router.post('/initcountries', async (req, res) => {
 
   try {
     //console.log("Req.body: ", req.body);
@@ -139,13 +139,14 @@ router.post('/', async (req, res) => {
       // loop though
       // check the ISO_A3 code 
       try {
-      const code = result1.features[i].properties["ISO_A3"];
-      // access dictionary with code
-      const entry = countries[code]; 
-      result1.features[i].properties.name = entry["name"];
-      result1.features[i].properties.CCA2 = entry["CCA2"];
-      result1.features[i].properties.overallRating = entry["overallRating"];
-      result1.features[i].properties.safetyRating = entry["safetyRating"];
+       
+        const code = result1.features[i].properties["ISO_A3"];
+        // access dictionary with code
+        const entry = countries[code]; 
+        result1.features[i].properties.name = entry["name"];
+        result1.features[i].properties.CCA2 = entry["CCA2"];
+        result1.features[i].properties.overallRating = entry["overallRating"];
+        result1.features[i].properties.safetyRating = entry["safetyRating"];
 
       }
       catch (error) { 
@@ -191,6 +192,8 @@ router.post('/', async (req, res) => {
 });
 
 
+
+
 router.get('/:id', async (req, res) => {
   try {
     console.log("Parameter id:", req.params.id);
@@ -204,7 +207,6 @@ router.get('/:id', async (req, res) => {
 
 
     //console.log("countries:", countries);
-    console.log("made it here");
     var poly1 = db.collection('polygonGeoJson1');
     var poly2 = db.collection('polygonGeoJson2');
 
@@ -215,7 +217,6 @@ router.get('/:id', async (req, res) => {
     var result1 = {}; 
     var result2 = {}; 
 
-    console.log("made it here...");
     await poly1.findOne({ _id: objectId1 })
       .then(result => {
         // Handle the query result
@@ -295,6 +296,62 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+
+
+router.get('/inithri', async (req,res) => {
+  const db = await getDb();
+  const collection = db.collection('hri_country');
+
+  const fs = require('fs');
+
+  const jsonData = fs.readFileSync('hri.json', 'utf8');
+  const data = JSON.parse(jsonData);
+  
+
+  collection.insertMany(data, function (err, result) {
+    if (err) {
+      console.error('Error inserting data:', err);
+      return;
+    }
+
+    console.log('Data uploaded successfully.');
+    client.close();
+  });
+
+
+  console.log("Parameter id:", req.params.id);
+  console.log("Ending test...")
+  return res.status(200).json({"this is the": "end"});
+
+
+
+})
+
+router.get('/hri/:name', async (req,res) => {
+  console.log('starting hri retrival');
+  const db = await getDb();
+  const hricollection = db.collection('hri_country');
+
+  const countryName = req.params.name;
+  console.log("countryName:", countryName);
+  var result1 = {};
+  await hricollection.findOne({ Country: countryName })
+  .then(result => {
+    // Handle the query result
+    console.log("Result: ", result);
+    result1 = result;
+  })
+  .catch(error => {
+    // Handle any errors
+    console.error('Error querying the collection:', error);
+    return res.status(500);
+  });
+  
+  
+  return res.status(200).json(result1);
+
+
+})
 
 
 module.exports = router;

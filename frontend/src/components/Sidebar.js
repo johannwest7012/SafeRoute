@@ -17,6 +17,9 @@ function Sidebar({ chosenCountries, setChosenCountries }) {
 
   function handleRemoveClick(country) {
     const updatedChosenCountries = chosenCountries.filter((c) => c !== country);
+    console.log("Chosen counrties",chosenCountries);
+    console.log("Updated Chosen counrties",updatedChosenCountries);
+
     setChosenCountries(updatedChosenCountries);
   }
 
