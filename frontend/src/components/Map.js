@@ -118,18 +118,19 @@ export default function Map( {countryData} ) {
           .setHTML(
 
       
-            "<h3 class='text'>" +
+            "<br/><h3 class='text'>" +
             e.features[0].properties.ADMIN +
               '</h3>' + 
+            
               "<h3>" +
-              "Human Freedom Score" +
-              `</h3><p style="color: ${e.features[0].properties.HUMANFREEDOMSCORECOLOR}" class="value">` +
-              e.features[0].properties.HUMANFREEDOMSCORE +
+              "Overall Freedom Rank" +
+              `</h3><p style="color: ${e.features[0].properties.HUMANFREEDOMRANKCOLOR}" class="value">` +
+              e.features[0].properties.HUMANFREEDOMRANK + "/165" +
               "</p>" +
               "<h3>" +
-              "Human Freedom Rank" +
-              `</h3><p style="color: ${e.features[0].properties.HUMANFREEDOMRANKCOLOR}" class="value">` +
-              e.features[0].properties.HUMANFREEDOMRANK +
+              "Overall Freedom" +
+              `</h3><p style="color: ${e.features[0].properties.HUMANFREEDOMSCORECOLOR}" class="value">` +
+              e.features[0].properties.HUMANFREEDOMSCORE +
               "</p>" +
               "<h3>" +
               "Security and Safety" +
@@ -137,13 +138,13 @@ export default function Map( {countryData} ) {
               e.features[0].properties.SECURITYANDSAFETY  +
               "</p>"+ 
               "<h3>" +
-              "Religion" +
+              "Religious Freedom" +
               `</h3><p style="color: ${e.features[0].properties.RELIGIONCOLOR}" class="value">`+
               e.features[0].properties.RELIGION  +
               "</p>"+ 
       
               "<h3>" +
-              "Same-sex Relationships" +
+              "Same-sex Relationships Freedom" +
               `</h3><p style="color: ${e.features[0].properties.SSRELATIONSHIPSCOLOR}" class="value">`+ 
               e.features[0].properties.SSRELATIONSHIPS  +
               "</p>"+ 

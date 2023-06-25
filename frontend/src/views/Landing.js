@@ -2,8 +2,15 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import "./Landing.css"
+import { useNavigate } from 'react-router-dom';
+
 
 function Landing() {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+      navigate('/map');
+    };
   return (
     <div>
         <Navbar/>
@@ -12,8 +19,8 @@ function Landing() {
                 
             </div>
             <div className='right-div'>
-                <h1 className='herotext'>Explore Confidently</h1>
-                <h1 className='herotext'>Find Your Route</h1>
+                <img className='heroimg' src='hero.svg'></img>
+                <button onClick={handleClick} className='big-button'>Let's go</button>
             </div>
         </div>
         <Footer/>

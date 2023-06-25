@@ -71,8 +71,12 @@ function WorldMapScreen() {
                 if (parseFloat(responseData2.data["HUMAN FREEDOM RANK"]) < 80) {
                   tempData.properties.HUMANFREEDOMRANKCOLOR = 'green';
                 }
-                else { 
+                else if (parseFloat(responseData2.data["HUMAN FREEDOM RANK"]) < 140) { 
+                  tempData.properties.HUMANFREEDOMRANKCOLOR = 'orange';
+                }
+                else {
                   tempData.properties.HUMANFREEDOMRANKCOLOR = 'red';
+
                 }
 
 
